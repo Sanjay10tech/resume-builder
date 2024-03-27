@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Resume Builder</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(181, 74, 253, 0.9);
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            float:inline-start;
+            margin-left:300px;
+            align-content: center;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        /*display styling*/
+
+        hr{
+            margin-top: 0px;
+        }
+        .col-md-4{
+            background-color: rgb(171, 55, 255);
+            color:white;
+        }
+        .box {
+            overflow-wrap:break-word;
+        }
+        img{
+            margin-right:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Build Your Resume</h2>
+        <form id="myForm" method="get">
+            <label for="name">Name:</label>
+            <input type="text" id="name" pattern="[A-Za-z]+" title="letters only" name="name" >
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" pattern = "[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="Enter Valid Email" name="email" >
+    
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" pattern="^\d{10}$" title="Numbers should be 10 digits" name="phone">
+            
+            
+            <label for="linked">Linkedin Url:</label>
+            <input type="text" id="linked" name="linked">
+    
+            <label for="github">GitHub Url:</label>
+            <input type="text" id="github" name="github">
+    
+            <label >Known Languages:</label>
+            <textarea id="languages" name="languages" rows="4"></textarea>
+    
+    
+            <label for="objective">Carrer Objective:</label>
+            <textarea id="objective" name="objective" rows="4" placeholder="wirite 5 to 6 lines"></textarea>
+     
+    
+            <label for="skills">Skills:</label>
+            <textarea id="skills" name="skills" rows="4"></textarea>
+    
+            
+    
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Qualifications</th>
+                      <th>School/<br>College Name</th>
+                      <th>State</th>
+                      <th>Passing Year</th>
+                      <th>CGPA</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><p>10th Details</p><input type="text" id="edu1" name="edu1"></td>
+                      <td><textarea cols="50" id="edu1-name"  name="edu1-name"></textarea></td>
+                      <td><input type="text" id="edu1-state" name="edu1-state"></td>
+                      <td><input type="text" id="edu1-year" name="edu1-year"></td>
+                      <td><input type="text" id="edu1-cgpa" name="edu1-cgpa"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><p>PUC/12th Details</p><input type="text" id="edu2"  name="edu2"></td>
+                        <td><textarea cols="50" id="edu2-name"  name="edu2-name"></textarea></td>
+                        <td><input type="text" id="edu2-state"  name="edu2-state"></td>
+                        <td><input type="text" id="edu2-year"  name="edu2-year"></td>
+                        <td><input type="text" id="edu2-cgpa"  name="edu2-cgpa"></td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td><p>Graduation Details</p><input type="text" id="edu3"  name="edu3"></td>
+                        <td><textarea cols="50" id="edu3-name"  name="edu3-name"></textarea></td>
+                        <td><input type="text" id="edu3-state" name="edu3-state"></td>
+                        <td><input type="text" id="edu3-year" name="edu3-year"></td>
+                        <td><input type="text" id="edu3-cgpa" name="edu3-cgpa"></td>
+                      </tr>
+                  </tbody>
+                </table>
+            </div>
+            
+            
+            
+            <label for="exampleFormControlFile1">Upload File:</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+      
+    
+            <input type="submit" value="Generate Resume">
+
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission and resume generation
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Construct resume template
+            let resumeTemplate = `
+                            
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="" id="DexampleFormControlFile1" class="rounded-circle" width="150px" height="150px">
+                            <h4 style="padding-right:400px; padding-top:10px;">CONTACT</h4>
+                            <hr>
+                            <div>
+                                <img src="img/call-outline.svg" style="float:left"  width="25px" height="25px">
+                                    <p>${formData.get('phone')}</p>
+                                <img src="img/mail-outline.svg" style="float:left" width="25px" height="25px">
+                                    <p>${formData.get('email')}</p>
+                                <img src="img/logo-linkedin.svg" style="float:left" width="25px" height="25px">
+                                    <p >${formData.get('linked')}</p>
+                                <img src="img/logo-github.svg" style="float:left" width="25px" height="25px">
+                                    <p>${formData.get('github')}</p>
+                            </div>
+                            <br>
+                            <h4 style="padding-right:400px; padding-top:10px;" >Education</h4>
+                            <hr>
+                            <div>
+                            <ul>
+                                <p>${formData.get('edu1')}</p>
+                                <p style="display: inline-block;" >${formData.get('edu1-name')}</p>
+                                <p style="float:right"  >${formData.get('edu1-state')}</p> 
+                                <p >${formData.get('edu1-year')}</p>
+                                <p style="display: inline-block;">${formData.get('edu1-cgpa')}</p>
+
+                                <b><p>${formData.get('edu2')}</p></b>
+                                <p style="display: inline-block;" >${formData.get('edu2-name')}</p>
+                                <p style="float:right"  >${formData.get('edu2-state')}</p> 
+                                <p >${formData.get('edu2-year')}</p>
+                                <p style="display: inline-block;">${formData.get('edu2-cgpa')}</p>
+
+                                <b><p>${formData.get('edu3')}</p></b>
+                                <p style="display: inline-block;" >${formData.get('edu3-name')}</p>
+                                <p style="float:right"  >${formData.get('edu3-state')}</p> 
+                                <p >${formData.get('edu3-year')}</p>
+                                <p style="display: inline-block;">${formData.get('edu3-cgpa')}</p2
+                            </ul>
+                            </div>
+                            <div>
+                            <h4 style="padding-right:400px; padding-top:10px;">Languages</h4>
+                            <hr>    
+                                
+                            </div>
+            
+                </div>
+        <div class="col-md-8">
+            <p class="display-4">${formData.get('name')}</p>
+            <div class="box">
+            <p>${formData.get('objective')}</p>
+            </div>
+            <hr>
+        </div>   
+    </div>
+</div>    
+
+            `;
+            
+            // Print or display resume
+            document.body.innerHTML = resumeTemplate;
+
+            // Optional: You can style the resume template here
+            document.body.style.fontFamily = 'Arial, sans-serif';
+            document.body.style.margin = '20px';
+            document.body.style.padding = '20px';
+            document.body.style.background = '#fff';
+        });
+    </script>
+</body>
+</html>
