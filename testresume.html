@@ -52,15 +52,12 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            float:inline-start;
-            margin-left:300px;
-            align-content: center;
+            display: block;
+            margin: 20px auto;
         }
         input[type="submit"]:hover {
             background-color: #45a049;
         }
-        /*display styling*/
-
         hr{
             margin-top: 0px;
         }
@@ -69,10 +66,10 @@
             color:white;
         }
         .box {
-            overflow-wrap:break-word;
+            overflow-wrap: break-word;
         }
-        img{
-            margin-right:10px;
+        img {
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -89,27 +86,23 @@
             <label for="phone">Phone:</label>
             <input type="tel" id="phone" pattern="^\d{10}$" title="Numbers should be 10 digits" name="phone">
             
-            
-            <label for="linked">Linkedin Url:</label>
-            <input type="text" id="linked" name="linked">
+            <label for="linked">LinkedIn URL:</label>
+            <input type="text" id="linked" pattern="https?://(www\.)?linkedin\.com/.+" title="Enter a valid LinkedIn URL" name="linked">
     
-            <label for="github">GitHub Url:</label>
-            <input type="text" id="github" name="github">
+            <label for="github">GitHub URL:</label>
+            <input type="text" id="github" pattern="https?://(www\.)?github\.com/.+" title="Enter a valid GitHub URL" name="github">
     
-            <label >Known Languages:</label>
+            <label>Known Languages:</label>
             <textarea id="languages" name="languages" rows="4"></textarea>
     
-    
-            <label for="objective">Carrer Objective:</label>
-            <textarea id="objective" name="objective" rows="4" placeholder="wirite 5 to 6 lines"></textarea>
-     
+            <label for="objective">Career Objective:</label>
+            <textarea id="objective" name="objective" rows="4" placeholder="Write 5 to 6 lines"></textarea>
     
             <label for="skills">Skills:</label>
             <textarea id="skills" name="skills" rows="4"></textarea>
-            <label for="projects">acadmic projects:</label>
-            <textarea id="projects" name="acadmic projects" rows="4"></textarea>
-    
             
+            <label for="projects">Academic Projects:</label>
+            <textarea id="projects" name="projects" rows="4"></textarea>
     
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -121,128 +114,81 @@
                       <th>State</th>
                       <th>Passing Year</th>
                       <th>CGPA</th>
-                      
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>1</td>
                       <td><p>10th Details</p><input type="text" id="edu1" name="edu1"></td>
-                      <td><textarea cols="50" id="edu1-name"  name="edu1-name"></textarea></td>
+                      <td><textarea cols="50" id="edu1-name" name="edu1-name"></textarea></td>
                       <td><input type="text" id="edu1-state" name="edu1-state"></td>
                       <td><input type="text" id="edu1-year" name="edu1-year"></td>
                       <td><input type="text" id="edu1-cgpa" name="edu1-cgpa"></td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td><p>PUC/12th Details</p><input type="text" id="edu2"  name="edu2"></td>
-                        <td><textarea cols="50" id="edu2-name"  name="edu2-name"></textarea></td>
-                        <td><input type="text" id="edu2-state"  name="edu2-state"></td>
-                        <td><input type="text" id="edu2-year"  name="edu2-year"></td>
-                        <td><input type="text" id="edu2-cgpa"  name="edu2-cgpa"></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td><p>Graduation Details</p><input type="text" id="edu3"  name="edu3"></td>
-                        <td><textarea cols="50" id="edu3-name"  name="edu3-name"></textarea></td>
-                        <td><input type="text" id="edu3-state" name="edu3-state"></td>
-                        <td><input type="text" id="edu3-year" name="edu3-year"></td>
-                        <td><input type="text" id="edu3-cgpa" name="edu3-cgpa"></td>
-                      </tr>
+                      <td>2</td>
+                      <td><p>PUC/12th Details</p><input type="text" id="edu2" name="edu2"></td>
+                      <td><textarea cols="50" id="edu2-name" name="edu2-name"></textarea></td>
+                      <td><input type="text" id="edu2-state" name="edu2-state"></td>
+                      <td><input type="text" id="edu2-year" name="edu2-year"></td>
+                      <td><input type="text" id="edu2-cgpa" name="edu2-cgpa"></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><p>Graduation Details</p><input type="text" id="edu3" name="edu3"></td>
+                      <td><textarea cols="50" id="edu3-name" name="edu3-name"></textarea></td>
+                      <td><input type="text" id="edu3-state" name="edu3-state"></td>
+                      <td><input type="text" id="edu3-year" name="edu3-year"></td>
+                      <td><input type="text" id="edu3-cgpa" name="edu3-cgpa"></td>
+                    </tr>
                   </tbody>
                 </table>
             </div>
-            
-            
-            
+    
             <label for="exampleFormControlFile1">Upload File:</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1">
-      
     
             <input type="submit" value="Generate Resume">
-
         </form>
     </div>
 
     <script>
-        // JavaScript to handle form submission and resume generation
         document.getElementById('myForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             // Get form data
             const formData = new FormData(this);
-            
-            // Construct resume template
-            let resumeTemplate = `
-                            
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="" id="DexampleFormControlFile1" class="rounded-circle" width="150px" height="150px">
-                            <h4 style="padding-right:400px; padding-top:10px;">CONTACT</h4>
-                            <hr>
-                            <div>
-                                <img src="img/call-outline.svg" style="float:left"  width="25px" height="25px">
+
+            // Read uploaded image
+            const fileInput = document.getElementById('exampleFormControlFile1');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgData = e.target.result;
+
+                // Construct resume template
+                let resumeTemplate = `
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="${imgData}" class="rounded-circle" width="150px" height="150px">
+                                <h4 style="padding-right:400px; padding-top:10px;">CONTACT</h4>
+                                <hr>
+                                <div>
+                                    <img src="img/call-outline.svg" style="float:left" width="25px" height="25px">
                                     <p>${formData.get('phone')}</p>
-                                <img src="img/mail-outline.svg" style="float:left" width="25px" height="25px">
+                                    <img src="img/mail-outline.svg" style="float:left" width="25px" height="25px">
                                     <p>${formData.get('email')}</p>
-                                <img src="img/logo-linkedin.svg" style="float:left" width="25px" height="25px">
-                                    <p >${formData.get('linked')}</p>
-                                <img src="img/logo-github.svg" style="float:left" width="25px" height="25px">
+                                    <img src="img/logo-linkedin.svg" style="float:left" width="25px" height="25px">
+                                    <p>${formData.get('linked')}</p>
+                                    <img src="img/logo-github.svg" style="float:left" width="25px" height="25px">
                                     <p>${formData.get('github')}</p>
-                            </div>
-                            <br>
-                            <h4 style="padding-right:400px; padding-top:10px;" >Education</h4>
-                            <hr>
-                            <div>
-                            <ul>
-                                <p>${formData.get('edu1')}</p>
-                                <p style="display: inline-block;" >${formData.get('edu1-name')}</p>
-                                <p style="float:right"  >${formData.get('edu1-state')}</p> 
-                                <p >${formData.get('edu1-year')}</p>
-                                <p style="display: inline-block;">${formData.get('edu1-cgpa')}</p>
-
-                                <b><p>${formData.get('edu2')}</p></b>
-                                <p style="display: inline-block;" >${formData.get('edu2-name')}</p>
-                                <p style="float:right"  >${formData.get('edu2-state')}</p> 
-                                <p >${formData.get('edu2-year')}</p>
-                                <p style="display: inline-block;">${formData.get('edu2-cgpa')}</p>
-
-                                <b><p>${formData.get('edu3')}</p></b>
-                                <p style="display: inline-block;" >${formData.get('edu3-name')}</p>
-                                <p style="float:right"  >${formData.get('edu3-state')}</p> 
-                                <p >${formData.get('edu3-year')}</p>
-                                <p style="display: inline-block;">${formData.get('edu3-cgpa')}</p2
-                            </ul>
-                            </div>
-                            <div>
-                            <h4 style="padding-right:400px; padding-top:10px;">Languages</h4>
-                            <hr>    
-                                
-                            </div>
-            
-                </div>
-        <div class="col-md-8">
-            <p class="display-4">${formData.get('name')}</p>
-            <div class="box">
-            <p>${formData.get('objective')}</p>
-            </div>
-            <hr>
-        </div>   
-    </div>
-</div>    
-
-            `;
-            
-            // Print or display resume
-            document.body.innerHTML = resumeTemplate;
-
-            // Optional: You can style the resume template here
-            document.body.style.fontFamily = 'Arial, sans-serif';
-            document.body.style.margin = '20px';
-            document.body.style.padding = '20px';
-            document.body.style.background = '#fff';
-        });
-    </script>
-</body>
-</html>
+                                </div>
+                                <br>
+                                <h4 style="padding-right:400px; padding-top:10px;">Education</h4>
+                                <hr>
+                                <div>
+                                    <ul>
+                                        <p>${formData.get('edu1')}</p>
+                                        <p style="display: inline-block;">${formData.get('edu1-name')}</p>
+                                        <p style="float:right
